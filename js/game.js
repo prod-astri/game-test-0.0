@@ -6,7 +6,8 @@ class Game {
     setup(){
         this.state = new State();
         this.background = new Background();
-        this.cannon = new Cannon()
+        this.cannon = new Cannon();
+        this.bullet = new Bullet();
     }
    
     preloadGame(){
@@ -22,7 +23,7 @@ class Game {
         
         this.background.draw(width/2, height/2);
         this.cannon.draw();
-        
+        this.bullet.draw();
         // console.log(frameCount)
         // 15.. iterating over obstacles array and draw every object
         // this.obstacles.forEach(function(obstacle){
