@@ -7,6 +7,9 @@ class Cannon {
         console.log(`%c cannon constructor`, `color: green`);
     }
     draw(){
+        noFill()
         circle(this.x, this.y, this.coreSize);
+        noFill()
+        rect(this.x-this.coreSize/2, this.y-this.coreSize*1.2, this.coreSize, this.coreSize*1.2)
     }
 }
