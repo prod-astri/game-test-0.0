@@ -20,7 +20,7 @@ class Game {
     draw() {
         clear()
         
-        this.background.draw();
+        this.background.draw(width/2, height/2);
         this.cannon.draw();
         
         // console.log(frameCount)

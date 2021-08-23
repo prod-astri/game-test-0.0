@@ -1,6 +1,6 @@
 class Background {
     draw(){
-        console.log(`%c background draw`, `color: green`);
+        // console.log(`%c background draw`, `color: green`);
 
         // floor
         stroke('black')
