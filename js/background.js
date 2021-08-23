@@ -1,10 +1,10 @@
 class Background {
     draw(){
-        console.log(`Background draw`);
-        noStroke();
-        fill(180, 255, 160);
-        rect(0, 0, width, height);
+        console.log(`%c background draw`, `color: green`);
 
-        line()
+        // floor
+        stroke('black')
+        strokeWeight(1);
+        line(0, height*0.9, width, height*0.9 )
     }   
 }

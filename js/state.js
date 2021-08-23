@@ -1,6 +1,9 @@
 class State {
     constructor(){
-        this.str = `state constructor`;
-        console.log(`%c ${this.str} `, 'color: green');
+        console.log(`%c state constructor`, 'color: green');
+
+        // creating an unit 1/100th of the canvas
+        this.u = width/100;
+        console.log(`1 unit = ${this.u}`)
     }
 }

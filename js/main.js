@@ -1,12 +1,23 @@
 // the only thinfg i do directly
+
 const game = new Game();
 
 function preload() {
     game.preloadGame();
 }
 
+let side = 0;
+
 function setup() {
-    createCanvas(600, 600);
+    let titleStyle = getComputedStyle(document.querySelector('body'));
+    console.log (titleStyle) ;
+    if (windowWidth > windowHeight){
+        side = Math.round(0.9*windowHeight);
+    } else if (windowWidth <= windowHeight){
+        side = Math.round(0.9*windowWidth);
+    }
+    createCanvas(side, side);
+    
     game.setup();
 }
 
