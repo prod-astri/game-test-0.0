@@ -4,6 +4,11 @@ class Game {
         this.u = 1;
         console.log(`%c game constructor`, `color: green`)
         this.angleInput;
+        this.commitButton;
+        
+        
+        this.angleMomentary = 0;
+        this.angleCommitted = 0;
     }
     
     setup(){
@@ -14,14 +19,15 @@ class Game {
         this.u = this.state.u;
         console.log(`%c the game setup unit is now ${this.u}`, `color: orange`)
         
-        
+        // numeric input for 
         this.angleInput = createInput('0', 'number');
-        this.angleInput.position(0, 0);
+        this.angleInput.position(20, 20);
         this.angleInput.size(80);
         this.angleInput.input(this.myInputEvent);
         
-        // let commitButton = createButton("shoot!");
-        // commitButton.position(angleInput.x + angleInput.width, 0)
+        this.commitButton = createButton("shoot!");
+        this.commitButton.position(this.angleInput.x + this.angleInput.width, this.angleInput.x)
+        this.commitButton.mousePressed(this.myButtonEvent)
     }
     
     //   button = createButton('submit');
@@ -55,6 +61,17 @@ class Game {
     
     
     myInputEvent() {
-        console.log('angle value: ', this.value());
+        this.angleMomentary = this.value();
+        console.log('angleMomentary: ', this.angleMomentary);
+        console.log (`%c angle committed: ${this.angleCommitted}`, `color: purple`)
     }
+    
+    
+    myButtonEvent() {
+        console.log (`%c button event angle committed: ${this.angleCommitted}`, `color: orange`)
+        this.angleCommitted = this.angleMomentary;
+        
+        this.cannon.angle = this.angleCommitted;
+    }
+    
 }

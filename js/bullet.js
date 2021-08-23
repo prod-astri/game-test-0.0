@@ -7,8 +7,9 @@ class Bullet {
         this.velocityY = 0;
         console.log(`%c bullet constructor: new BULLET!`, `color: green`)
     }
-    
+
     draw(state){
         circle(this.x, this.y, this.bulletSize);
     }
 }
+
