@@ -10,7 +10,8 @@ let side = 0;
 
 function setup() {
     let titleStyle = getComputedStyle(document.querySelector('body'));
-    console.log (titleStyle) ;
+    //// //// to solve
+    // console.log (titleStyle) ;
     if (windowWidth > windowHeight){
         side = Math.round(0.9*windowHeight);
     } else if (windowWidth <= windowHeight){
