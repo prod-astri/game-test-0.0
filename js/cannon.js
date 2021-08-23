@@ -1,10 +1,10 @@
 class Cannon {
     constructor(){
         this.u = game.state.u;
-        this.coreSize = 20*this.u
-        this.x = 20*this.u;
-        this.y = 80*this.u;
-        console.log(`%c cannon constructor`, `color: green`)
+        this.coreSize = 10*this.u;
+        this.x = this.coreSize*1.5;
+        this.y = game.background.playerFloorHeight - this.coreSize/2;
+        console.log(`%c cannon constructor`, `color: green`);
     }
     draw(){
         circle(this.x, this.y, this.coreSize);
