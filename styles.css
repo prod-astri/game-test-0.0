@@ -1,0 +1,12 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  background-color: hsl(13, 100%, 90%);
+}
+
+h1 {
+  color: salmon;
+}
