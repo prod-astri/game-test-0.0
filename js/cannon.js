@@ -1,6 +1,7 @@
 class Cannon {
     constructor(){
         this.u = game.state.u;
+        
         this.coreSize = 8*this.u;
         this.x = this.coreSize*1.5;
         this.y = game.background.playerFloorHeight - this.coreSize/2;

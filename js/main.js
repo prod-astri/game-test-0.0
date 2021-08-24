@@ -9,7 +9,7 @@ function preload() {
 let side = 0;
 
 function setup() {
-    let titleStyle = getComputedStyle(document.querySelector('body'));
+    // let titleStyle = getComputedStyle(document.querySelector('body'));
     //// //// to solve
     // console.log (titleStyle) ;
     if (windowWidth > windowHeight){
@@ -17,6 +17,7 @@ function setup() {
     } else if (windowWidth <= windowHeight){
         side = Math.round(0.9*windowWidth);
     }
+    
     createCanvas(side, side);
     
     game.setup();

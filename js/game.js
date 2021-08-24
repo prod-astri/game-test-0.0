@@ -48,7 +48,7 @@ class Game {
     
     draw() {
         clear()
-        
+        // console.log(this.angleCommitted);
         this.background.draw(width/2, height/2);
         this.cannon.draw();
         this.bullet.draw();
@@ -63,7 +63,8 @@ class Game {
     myInputEvent() {
         this.angleMomentary = this.value();
         console.log('angleMomentary: ', this.angleMomentary);
-        console.log (`%c angle committed: ${this.angleCommitted}`, `color: purple`)
+        console.log (`angle committed:`, this.angleCommitted)
+        // this.cannon.angle = this.angleMomentary; 
     }
     
     
