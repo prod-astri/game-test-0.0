@@ -3,7 +3,7 @@ class Background {
         this.u = game.state.u;
         this.playerFloorHeight = 90*this.u;
 
-        console.log(`%c background constructor`, 'color: green');
+        console.log(`%c / background constructor`, 'color: green');
     }
     draw(){
         // console.log(`%c background draw`, `color: green`);

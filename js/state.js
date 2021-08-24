@@ -2,8 +2,11 @@ class State {
     constructor(){
         // creating an unit 1/100th of the canvas
         this.u = width/100;
-        console.log(`%c the state setup unit is now ${this.u}`, `color: orange`)
+        console.log(`%c the unit is now ${this.u}`, `color: lightgreen`)
 
-        console.log(`%c state constructor`, 'color: green');
+        this.wind = 0;
+        this.gravity = 100;
+        console.log(`%c / state constructor`, 'color: green');
+   
     }
 }
