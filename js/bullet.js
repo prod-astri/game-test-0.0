@@ -16,16 +16,18 @@ class Bullet {
         console.log(`%c / bullet constructor: new BULLET!`, `color: green`)
     }
     move(){
-        this.x += this.velocityVector.rotatedX;
-        this.y -= this.velocityVector.rotatedY;
+        if (game.state.state === 'shoot'){
+            this.x += this.velocityVector.rotatedX;
+            this.y -= this.velocityVector.rotatedY;
+        }
     }
-
+    
     draw(state){
         // angleMode('DEGREES');
         
         
         circle(this.x, this.y, this.bulletSize);
-
+        
         // // la x del vettore e' uguale alla x del proiettile
         // this.velocityVector.x = this.x;
         // // la y del vettore e' la y del proiettile - la lunghezza, determinata da Velocity

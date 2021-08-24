@@ -84,6 +84,8 @@ class Game {
         this.bullet.angle = this.angleCommitted;
         this.bullet.velocity = this.velocityCommitted
 
+        this.state.state = 'shoot';
+        
         console.log(`%c  shot with angle ${this.angleCommitted} and vel ${this.velocityCommitted}`, `color: orange`);
         
     }

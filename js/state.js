@@ -6,7 +6,8 @@ class State {
 
         this.wind = 0;
         this.gravity = 100;
+        this.state = "set up";
         console.log(`%c / state constructor`, 'color: green');
-   
+        
     }
 }

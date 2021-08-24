@@ -7,7 +7,7 @@ class Cannon {
         this.y = game.background.playerFloorHeight - this.coreSize/2;
 
         this.angle = game.angleMomentary;
-        this.velocitty = 
+        
         console.log(`%c cannon starting angle = ${this.angle}`, `color: lightgreen`)
         console.log(`%c / cannon constructor`, `color: green`)
     }
