@@ -1,10 +1,15 @@
 class Bullet {
     constructor(){
+        this.u = game.state.u;
+
         this.x = game.cannon.x;
         this.y = game.cannon.y;
         this.bulletSize = game.cannon.coreSize/2;
+
+        this.gravity = game.state.gravity;
         this.angle = 0;
         this.velocity = 0;
+        
         // 𝑥2 = cos𝛽𝑥1 − sin𝛽𝑦1 
         // 𝑦2 = sin𝛽𝑥1 + cos𝛽𝑦1
         this.velocityVector = {
@@ -17,18 +22,28 @@ class Bullet {
     }
     
     move(){
+        
         if (game.state.state === 'shoot'){
             this.x += this.velocityVector.rotatedX;
             this.y -= this.velocityVector.rotatedY;
-
+            
             // gravity 
-            this.velocityVector.rotatedY -= game.state.gravity;
+            this.velocityVector.rotatedY -= this.gravity;
+            
         }
     }
+    //console.log(`%c / gravity in move mod: ${this.gravity}`, `color: red`)
     
     draw(state){
+        angleMode(DEGREES)       
+
+        line(this.x, this.y, this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY)
+        circle(this.x, this.y, this.bulletSize);
+        fill(255, 0, 0)
+        noStroke()
+        circle(this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY, this.u)
         
-        // size of the bullet changing
+                // size of the bullet changing
         // could make 1 more for the win lose stuff
         if (game.state.state === 'setup'){
             this.bulletSize -= game.cannon.coreSize/100;
@@ -42,19 +57,6 @@ class Bullet {
             }
         }
 
-        circle(this.x, this.y, this.bulletSize);
-        
-        // la x del vettore e' uguale alla x del proiettile
-        // this.velocityVector.x = this.x;
-        // // la y del vettore e' la y del proiettile - la lunghezza, determinata da Velocity
-        // this.velocityVector.y = this.y - this.velocity;
-        // // e ora le ruoto con la formula
-        // this.velocityVector.rotatedX = (cos(this.angle)*this.velocityVector.x) - (sin(this.angle)*this.velocityVector.y);
-        // this.velocityVector.rotatedY = (sin(this.angle)*this.velocityVector.x) + (cos(this.angle)*this.velocityVector.y);
-        // this.velocityVector.rotatedX += this.x;
-        // this.velocityVector.rotatedY += this.y;
-        // line(this.x, this.y, this.velocityVector.rotatedX, this.velocityVector.rotatedY)
-        
     }
 }
 
