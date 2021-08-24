@@ -1,28 +1,27 @@
 class Game {
     constructor(){
         this.u = 1;
-
+        
         this.angleInput;
         this.velocityInput;
         this.commitButton;
         
         this.angleMomentary = 0;
         this.angleCommitted = 0;
-
+        
         this.velocityMomentary = 0;
         this.velocityCommitted = 0;
-
+        
         console.log(`%c / game constructor`, `color: green`)
     }
     
     setup(){
         
-
         this.state = new State();
         this.background = new Background();
         this.cannon = new Cannon();
         this.bullet = new Bullet();
-
+        
         this.u = this.state.u;
         
         // creating the inputs and button;
@@ -40,14 +39,14 @@ class Game {
         this.commitButton.position(this.angleInput.x + this.angleInput.width, this.angleInput.x)
         this.commitButton.mousePressed(this.myButtonEvent)
     }
-
+    
     preloadGame(){
         console.log(`%c / Preload!`, 'color: green')
     }
     
     draw() {
         clear()
-
+        
         this.background.draw(width/2, height/2);
         this.cannon.draw();
         this.bullet.move();
@@ -62,32 +61,36 @@ class Game {
     
     myInputEvent = () => {
         this.angleMomentary = this.angleInput.value();
-        this.velocityMomentary = this.velocityInput.value();
-
+        this.velocityMomentary = 0.1*this.velocityInput.value();
+        
         this.cannon.angle = this.angleMomentary;
         this.bullet.angle = this.angleMomentary;
         this.bullet.velocity = this.velocityMomentary;
-    
+        
         console.log('momentary cannon angle: ', this.cannon.angle);
-
-       
         console.log('momentary bullet velocity:', this.bullet.velocity);
         
     }
     
     myButtonEvent = () => {
-    
-        this.angleCommitted = this.angleMomentary;
-        this.velocityCommitted = this.velocityMomentary;
-
-        this.cannon.angle = this.angleCommitted;
-        this.bullet.angle = this.angleCommitted;
-        this.bullet.velocity = this.velocityCommitted
-
-        this.state.state = 'shoot';
         
-        console.log(`%c  shot with angle ${this.angleCommitted} and vel ${this.velocityCommitted}`, `color: orange`);
+        if (this.state.state === 'setup'){
+            
+            this.angleCommitted = this.angleMomentary;
+            this.velocityCommitted = this.velocityMomentary;
+            
+            this.cannon.angle = this.angleCommitted;
+            this.bullet.angle = this.angleCommitted;
+            this.bullet.velocityVector.rotatedY = this.velocityCommitted
+            
+            this.state.state = 'shoot';
+            
+            console.log(`%c  shot with angle ${this.angleCommitted} and vel ${this.velocityCommitted}`, `color: orange`);
+        } else {
+            console.log(`%c already shot`, `color: red`)
+        }
+        
         
     }
-
+    
 }
