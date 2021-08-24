@@ -15,6 +15,7 @@ class Bullet {
         }
         console.log(`%c / bullet constructor: new BULLET!`, `color: green`)
     }
+    
     move(){
         if (game.state.state === 'shoot'){
             this.x += this.velocityVector.rotatedX;
@@ -23,9 +24,21 @@ class Bullet {
     }
     
     draw(state){
-        // angleMode('DEGREES');
         
-        
+        // size of the bullet changing
+        // could make 1 more for the win lose stuff
+        if (game.state.state === 'setup'){
+            this.bulletSize -= game.cannon.coreSize/100;
+            if (this.bulletSize <= game.cannon.coreSize/10){
+                this.bulletSize = game.cannon.coreSize/2;
+            }
+        }
+        if (game.state.state === "shoot"){
+            if (this.bulletSize < game.cannon.coreSize/2){
+                this.bulletSize += game.cannon.coreSize/200;   
+            }
+        }
+
         circle(this.x, this.y, this.bulletSize);
         
         // // la x del vettore e' uguale alla x del proiettile
