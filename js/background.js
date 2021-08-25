@@ -1,17 +1,58 @@
 class Background {
     constructor(){
         // repeating the statement due to structure problems
-        this.u = width/100;
+        this.u = game.state.u;
         this.playerFloorHeight = 90*this.u;
-
+        
+        this.lines = this.newLinesSet();
+        // console.log(`%c / ${this.lines}`, 'color: blue')
         console.log(`%c / background constructor`, 'color: green');
+        
     }
+    
+    
+    newLinesSet(){
+        let arr = [];
+        for (let i = 1; i < game.state.backgroundLines; i++ ){
+            let x1, y1, x2, y2;
+            y1 = Math.random() * this.playerFloorHeight;
+            y2 = y1;
+            x1 = Math.random() * width;
+            x2 = x1+this.u*100*game.state.wind;
+            arr.push([x1, y1, x2, y2])
+        }
+        console.log('%c / new set of background lines', 'color: green')
+        return arr;
+    }
+    
     draw(){
         // console.log(`%c background draw`, `color: green`);
-
+        
         // floor
         stroke('black')
         strokeWeight(1);
-        line(0, this.playerFloorHeight, width, this.playerFloorHeight)
+        line(0, this.playerFloorHeight, width, this.playerFloorHeight);
+        for (let stroke of this.lines){
+            line(stroke[0], stroke[1], stroke[2], stroke[3])
+            // x1 coordinate of each line
+            stroke[0] -= game.state.wind*30;
+            // x2 coordinate of each line
+            stroke[2] -= game.state.wind*30;
+            // loop the wind strokes
+            if (game.state.wind > 0){
+                if (stroke[2] < 0){
+                    stroke[0] = width;
+                    stroke[2] = stroke[0]+this.u*100*game.state.wind;
+                    stroke[1] = stroke[3] = Math.random() * this.playerFloorHeight;
+                }
+            } else if (game.state.wind <= 0){
+                if (stroke[2] > width){
+                    stroke[0] = 0;
+                    stroke[2] = stroke[0]+this.u*100*game.state.wind;
+                    stroke[1] = stroke[3] = Math.random() * this.playerFloorHeight;
+                }
+            }
+        }
+        
     }   
 }

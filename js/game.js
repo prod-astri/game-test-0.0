@@ -16,8 +16,8 @@ class Game {
     }
     
     setup(){
-        this.background = new Background();
         this.state = new State();
+        this.background = new Background();
         
         this.cannon = new Cannon();
         this.bullet = new Bullet();

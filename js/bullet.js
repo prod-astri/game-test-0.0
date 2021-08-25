@@ -7,6 +7,7 @@ class Bullet {
         this.bulletSize = game.cannon.coreSize/2;
 
         this.gravity = game.state.gravity;
+        this.wind = game.state.wind;
         this.angle = 0;
         this.velocity = 0;
         
@@ -29,7 +30,8 @@ class Bullet {
             
             // gravity 
             this.velocityVector.rotatedY -= this.gravity;
-            
+            // wind
+            this.velocityVector.rotatedX -= this.wind;
         }
     }
     //console.log(`%c / gravity in move mod: ${this.gravity}`, `color: red`)
@@ -38,6 +40,7 @@ class Bullet {
         angleMode(DEGREES)       
 
         line(this.x, this.y, this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY)
+        fill('azure')
         circle(this.x, this.y, this.bulletSize);
         fill(255, 0, 0)
         noStroke()

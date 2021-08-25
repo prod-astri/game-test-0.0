@@ -13,9 +13,9 @@ class Cannon {
     }
 
     draw(){
-        noFill()
+        fill('azure')
         circle(this.x, this.y, this.coreSize);
-        noFill()
+        
         rect(this.x-this.coreSize/2, this.y-this.coreSize*1.2, this.coreSize, this.coreSize*1.2)
         
         // console.log(`%c cannon angle = ${this.angle}`, `color: salmon`)

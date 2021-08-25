@@ -1,25 +1,23 @@
 class State {
     constructor(){
-        this.wind = 0.05;
+        this.wind = Math.random()*0.028 - 0.014;
         this.gravity = 0.05;
         
         // creating an unit 1/100th of the canvas
         this.u = width/100;
+        this.playerFloorHeight = 90*this.u
         console.log(`%c the unit is now ${this.u}`, `color: lightgreen`)
         
         this.state = "setup";
         this.bounces = 0;
-        this.maxBounces = 100000;
+        this.maxBounces = 3;
         
+        this.backgroundLines = 400;
         
-        
+        this.spacesX = [[this.u, width-this.u],[0, width]]
+        this.spacesY = [[this.u, height-this.u], [0, this.playerFloorHeight]]
         
         console.log(`%c / state constructor`, 'color: green');
-        this.spacesX = [[0, width],[0, width]]
-        
-        
-        this.spacesY = [[this.u, width-this.u], [0, game.background.playerFloorHeight]]
-        
     }
     
     collisions(){
