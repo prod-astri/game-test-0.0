@@ -18,14 +18,18 @@ class Game {
     setup(){
         this.state = new State(0, 0);
         this.background = new Background();
-        
+
+
+        this.mycontrols = new myControls();
+
+
         this.cannon = new Cannon();
         this.bullet = new Bullet();
 
         this.target = new Target();
 
         textSize(6*this.state.u);
-        // textAlign(CENTER, CENTER);
+        textAlign(RIGHT);
         
         
         // creating the inputs and button;
@@ -47,6 +51,10 @@ class Game {
     resetup(){
         this.state = new State(this.state.points, this.state.runs);
         this.background = new Background();
+        
+
+        this.mycontrols = new myControls();
+
         
         this.cannon = new Cannon();
         this.bullet = new Bullet();
@@ -80,6 +88,7 @@ class Game {
         clear()
         
         this.background.draw(width/2, height/2);
+        this.mycontrols.draw();
         this.cannon.draw();
         this.bullet.move();
         this.bullet.draw();

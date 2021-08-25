@@ -60,6 +60,6 @@ class Background {
             }
         }
         fill('crimson')
-        text(`${game.state.points}/${game.state.runs}`, width - 10*this.u, 7*this.u)
+        text(`${game.state.points}/${game.state.runs}`, width - 2*this.u, 7*this.u)
     }   
 }
