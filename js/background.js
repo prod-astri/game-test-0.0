@@ -3,7 +3,9 @@ class Background {
         // repeating the statement due to structure problems
         this.u = game.state.u;
         this.playerFloorHeight = 90*this.u;
-        
+        this.windOffset = 1000*game.state.wind;
+        console.log(this.windOffset, '<---- wind offset')
+
         this.lines = this.newLinesSet();
         // console.log(`%c / ${this.lines}`, 'color: blue')
         console.log(`%c / background constructor`, 'color: green');
@@ -18,7 +20,7 @@ class Background {
             y1 = Math.random() * this.playerFloorHeight;
             y2 = y1;
             x1 = Math.random() * width;
-            x2 = x1+this.u*100*game.state.wind;
+            x2 = x1+this.windOffset;
             arr.push([x1, y1, x2, y2])
         }
         console.log('%c / new set of background lines', 'color: green')
@@ -32,6 +34,7 @@ class Background {
         stroke('black')
         strokeWeight(1);
         line(0, this.playerFloorHeight, width, this.playerFloorHeight);
+        strokeWeight(0.5);
         for (let stroke of this.lines){
             line(stroke[0], stroke[1], stroke[2], stroke[3])
             // x1 coordinate of each line
@@ -42,13 +45,13 @@ class Background {
             if (game.state.wind > 0){
                 if (stroke[2] < 0){
                     stroke[0] = width;
-                    stroke[2] = stroke[0]+this.u*100*game.state.wind;
+                    stroke[2] = stroke[0]+this.windOffset;
                     stroke[1] = stroke[3] = Math.random() * this.playerFloorHeight;
                 }
             } else if (game.state.wind <= 0){
                 if (stroke[2] > width){
                     stroke[0] = 0;
-                    stroke[2] = stroke[0]+this.u*100*game.state.wind;
+                    stroke[2] = stroke[0]+this.windOffset;
                     stroke[1] = stroke[3] = Math.random() * this.playerFloorHeight;
                 }
             }

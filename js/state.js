@@ -1,6 +1,7 @@
 class State {
     constructor(){
         this.wind = Math.random()*0.028 - 0.014;
+        console.log(this.wind, "<----wind in the const")
         this.gravity = 0.05;
         
         // creating an unit 1/100th of the canvas
@@ -12,7 +13,7 @@ class State {
         this.bounces = 0;
         this.maxBounces = 3;
         
-        this.backgroundLines = 400;
+        this.backgroundLines = 300;
         
         this.spacesX = [[this.u, width-this.u],[0, width]]
         this.spacesY = [[this.u, height-this.u], [0, this.playerFloorHeight]]
