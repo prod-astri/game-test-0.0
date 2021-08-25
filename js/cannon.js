@@ -13,6 +13,7 @@ class Cannon {
     }
 
     draw(){
+        strokeWeight(1);
         fill('azure')
         circle(this.x, this.y, this.coreSize);
         

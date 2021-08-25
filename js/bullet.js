@@ -39,9 +39,12 @@ class Bullet {
     draw(state){
         angleMode(DEGREES)       
 
+        // 
         line(this.x, this.y, this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY)
+        // the bullet
         fill('azure')
         circle(this.x, this.y, this.bulletSize);
+        // the vector head
         fill(255, 0, 0)
         noStroke()
         circle(this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY, this.u)

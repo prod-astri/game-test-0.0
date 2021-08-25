@@ -16,14 +16,17 @@ class Game {
     }
     
     setup(){
-        this.state = new State();
+        this.state = new State(0, 0);
         this.background = new Background();
         
         this.cannon = new Cannon();
         this.bullet = new Bullet();
 
-         // draggin along my beloved unit
-        this.u = this.state.u;
+        this.target = new Target();
+
+        textSize(6*this.state.u);
+        // textAlign(CENTER, CENTER);
+        
         
         // creating the inputs and button;
         this.angleInput = createInput('0', 'number');
@@ -42,12 +45,13 @@ class Game {
     }
 
     resetup(){
-        this.state = new State();
+        this.state = new State(this.state.points, this.state.runs);
         this.background = new Background();
-        
         
         this.cannon = new Cannon();
         this.bullet = new Bullet();
+
+        this.target = new Target();
 
          // draggin along my beloved unit
         this.u = this.state.u;
@@ -79,7 +83,11 @@ class Game {
         this.cannon.draw();
         this.bullet.move();
         this.bullet.draw();
-        this.state.collisions()
+        
+        this.target.draw();
+        // this.target.targetCollision();
+
+        this.state.collisions();
         // console.log(frameCount)
         // 15.. iterating over obstacles array and draw every object
         // this.obstacles.forEach(function(obstacle){
@@ -88,6 +96,9 @@ class Game {
     }
     
     myInputEvent = () => {
+        if(!this.state.isBetween(this.angleInput.value(), -45, 45)){
+           console.log('invalid angle')
+        }
         this.angleMomentary = -this.angleInput.value();
         this.velocityMomentary = 0.1*this.velocityInput.value();
         
