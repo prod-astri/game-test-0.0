@@ -4,12 +4,12 @@ class State {
         this.runs = runs;
         console.log(`%c starting with ${this.points} points,  ${this.runs} runs`, `color: orange`)
         
-        this.gravity = 0;
-        this.wind = 0;
-        this.topHeightMod = 0;
-        // this.gravity = 0.05;
-        // this.wind = Math.random()*0.028 - 0.014;
-        // this.topHeightMod = 1;
+        // this.gravity = 0;
+        // this.wind = 0;
+        // this.topHeightMod = 0;
+        this.gravity = 0.05;
+        this.wind = Math.random()*0.028 - 0.014;
+        this.topHeightMod = 1;
         console.log(`%c the wind is now ${this.wind}`, `color: lightgreen`)
         
         // creating an unit 1/100th of the canvas

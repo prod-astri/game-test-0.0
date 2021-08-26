@@ -18,8 +18,8 @@ function setup() {
         side = Math.round(0.9*windowWidth);
     }
     
-    createCanvas(side, side);
-    
+   var cnv = createCanvas(side, side);
+   cnv.parent("gameBox");
     game.setup();
 }
 

@@ -7,6 +7,9 @@ body {
   background-color: hsl(13, 100%, 90%);
   margin-bottom: 1em;
 }
+small {
+  text-align: right;
+}
 
 h1 {
   color: green;
@@ -22,4 +25,20 @@ h1 {
 
 canvas {
   background-color:azure;
+}
+
+/* html body button {
+  background: transparent;
+  border: transparent;
+
+  size: 400px
+} */
+
+#gameBox {
+  
+    /* width: 960px;
+    height: 540px; */
+    /* margin: 0 auto; */
+    position: relative;
+  
 }

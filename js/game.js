@@ -19,9 +19,7 @@ class Game {
         this.state = new State(0, 0);
         this.background = new Background();
 
-
         this.mycontrols = new myControls();
-
 
         this.cannon = new Cannon();
         this.bullet = new Bullet();
@@ -34,24 +32,30 @@ class Game {
         
         // creating the inputs and button;
         this.angleInput = createInput('0', 'number');
-        this.angleInput.position(20, 20);
-        this.angleInput.size(80);
+        this.angleInput.parent("gameBox");
+        this.angleInput.position(12*this.u, 12*this.u);
+        this.angleInput.size(120*this.u, 20*this.u);
         this.angleInput.input(this.myInputEvent);
         
         this.velocityInput = createInput('0', 'number');
-        this.velocityInput.position(this.angleInput.x, this.angleInput.x + this.angleInput.height);
-        this.velocityInput.size(80);
+        this.velocityInput.parent("gameBox");
+        this.velocityInput.position(12*this.u, 42*this.u);
+        this.velocityInput.size(120*this.u, 20*this.u);
         this.velocityInput.input(this.myInputEvent);
         
-        this.commitButton = createButton("shoot!");
-        this.commitButton.position(this.angleInput.x + this.angleInput.width, this.angleInput.x)
+        this.commitButton = createButton("---shoot!---");
+        this.commitButton.parent("gameBox");
+        this.commitButton.position(12*this.u, 74*this.u);
+        this.commitButton.size(127*this.u, 20*this.u);
         this.commitButton.mousePressed(this.myButtonEvent)
     }
 
     resetup(){
+        this.u = width/100
         this.state = new State(this.state.points, this.state.runs);
         this.background = new Background();
 
+       
         this.mycontrols = new myControls();
 
         this.cannon = new Cannon();
@@ -59,8 +63,8 @@ class Game {
 
         this.target = new Target();
 
-         // draggin along my beloved unit
-        this.u = this.state.u;
+        textSize(6*this.state.u);
+        textAlign(RIGHT);
         
     }
     

@@ -6,20 +6,20 @@ class Background {
         this.windOffset = 1000*game.state.wind;
         
         this.lines = this.newLinesSet();
-
+        
         this.blocksLeft = game.state.blocksLeft;
         this.topHeight = game.state.topHeight;
         this.totalBlocks = game.state.totalBlocks;
-       
+        
         this.blocksWidth = game.state.blocksWidth;
-
+        
         this.highestBlock = game.state.highestBlock;
         this.blocksHeights = game.state.blocksHeights;
         
         console.log(`%c / background constructor`, 'color: green');
     }
     
-
+    
     
     newLinesSet(){
         let arr = [];
@@ -78,9 +78,10 @@ class Background {
         
         stroke('black')
         strokeWeight(1);
-        
+        push()
         // -- points counter
         fill('crimson')
         text(`${game.state.points}/${game.state.runs}`, width - 2*this.u, 7*this.u)
+        pop()
     }   
 }
