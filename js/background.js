@@ -8,12 +8,12 @@ class Background {
         this.lines = this.newLinesSet();
 
         this.blocksLeft = game.state.blocksLeft;
-        this.topHeight = game.state.topHeight
+        this.topHeight = game.state.topHeight;
         this.totalBlocks = game.state.totalBlocks;
        
         this.blocksWidth = game.state.blocksWidth;
 
-        this.highestBlock = game.state.highestBlock
+        this.highestBlock = game.state.highestBlock;
         this.blocksHeights = game.state.blocksHeights;
         
         console.log(`%c / background constructor`, 'color: green');
@@ -65,20 +65,21 @@ class Background {
             }
         }
         
+        stroke('gainsboro');
+        fill('gainsboro')
+        
         // -- floor
-        strokeWeight(1);
-        line(0, this.playerFloorHeight, width, this.playerFloorHeight);
+        rect(0, this.playerFloorHeight, width, this.playerFloorHeight);
         
-        
-        noStroke();
-        fill('fuchsia')
+        // -- hill
         for (let block in this.blocksHeights){
             rect(this.blocksLeft + (this.blocksWidth * block), this.playerFloorHeight-this.blocksHeights[block], this.blocksWidth, height)       
         }
-        //rect(width/3, this.topHeight, width/3, height)
+        
         stroke('black')
         strokeWeight(1);
-        // -- points
+        
+        // -- points counter
         fill('crimson')
         text(`${game.state.points}/${game.state.runs}`, width - 2*this.u, 7*this.u)
     }   
