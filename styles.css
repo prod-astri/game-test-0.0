@@ -4,11 +4,12 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: 'Roboto Mono', monospace;
-  background-color: hsl(13, 100%, 90%);
+  background-color: hsl(20, 100%, 97%);
   margin-bottom: 1em;
 }
-small {
-  text-align: right;
+
+a {
+  color: black
 }
 
 h1 {
@@ -38,7 +39,7 @@ canvas {
   
     /* width: 960px;
     height: 540px; */
-    /* margin: 0 auto; */
+    margin-top: 20px;
     position: relative;
   
 }

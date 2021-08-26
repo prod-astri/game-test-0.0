@@ -14,12 +14,11 @@ class State {
         
         // creating an unit 1/100th of the canvas
         this.u = width/100;
+
+        // this goues to background
         this.playerFloorHeight = 90*this.u
-        // console.log(`%c the unit is now ${this.u}`, `color: lightgreen`)
         
         this.state = "setup";
-        this.bounces = 0;
-        this.maxBounces = 3;
         
         this.backgroundLines = 300;
         
