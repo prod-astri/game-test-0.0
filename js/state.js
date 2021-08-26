@@ -2,11 +2,13 @@ class State {
     constructor(points, runs){
         this.points = points;
         this.runs = runs;
+        this.state = "setup";
         console.log(`%c starting with ${this.points} points,  ${this.runs} runs`, `color: orange`)
         
         // this.gravity = 0;
         // this.wind = 0;
         // this.topHeightMod = 0;
+
         this.gravity = 0.05;
         this.wind = Math.random()*0.028 - 0.014;
         this.topHeightMod = 1;
@@ -17,31 +19,33 @@ class State {
 
         // this goues to background
         this.playerFloorHeight = 90*this.u
-        
-        this.state = "setup";
-        
+
+        //    amount of wind lines
         this.backgroundLines = 300;
         
+        //    these are used to check the bounds of floor and game space
         this.spacesX = [[this.u, width*1.6],[0, width*1.6]]
         this.spacesY = [[-height, height-this.u], [-height, this.playerFloorHeight]]
         
-        // hill margin tip, amount of parts
+        //    hill margin tip, amount of parts
         this.blocksLeft = width/5;
         this.topHeight = Math.random()*60*this.u*this.topHeightMod;
         this.totalBlocks = 120;
 
-        //should create X blocks in a third of the space
+        //    should create in three fifths of the space, the mountain area
         this.blocksWidth = (width/5*3)/this.totalBlocks;
-        // make X steps: wich one is the tallest?
+        //    randomly pick a tallest step, not too close to the cannon
         this.highestBlock = Math.round(this.totalBlocks/5 + Math.round(Math.random()*(this.totalBlocks-this.totalBlocks/5)))
-        // calculate the heights of the other blocks;
+        //    calculate the heights of the other blocks to make the mountain;
         this.blocksHeights = this.calculateBlocksHeights(this.topHeight, this.highestBlock, this.totalBlocks);
-        // console.log(`%c highest block is number ${this.highestBlock}`, `color: lightgreen`);
-        // console.log(`%c blocks heights ${this.blocksHeights}`, `color: lightgreen`)
-        
+
         console.log(`%c / state constructor`, 'color: green');
     }
     
+    //returns descending values left and right of a top point
+    //                     V highest number
+    //                     V         V index of the highest number / block
+    //                     V         V          V number of total steps
     calculateBlocksHeights(topHeight, topIndex, totalBlocks){
         let res = [];
         for (let i = 1; i <= totalBlocks; i++){
@@ -72,11 +76,12 @@ class State {
         
         // -- target collision
         if (game.target.hit === false){
-            // console.log('stillfalse')
             if (abs(game.bullet.x - game.target.x) < game.bullet.bulletSize && abs(game.bullet.y - game.target.y) < game.bullet.bulletSize){
                 console.log(`%c HIT`, `color: red`)
                 game.state.points++
                 game.target.hit = true;
+                // this happens very shortly, does almost nothing
+                // triggers finalCollision in Target's Draw func
                 game.state.state = 'hit';
                 
             }
@@ -99,6 +104,7 @@ class State {
         game.resetup();
     }
     
+    // used for collision detection
     isBetween(x, a, b){
         // alternative: (x-a)*(x-b)<0
         return (x-a^x-b)<0;

@@ -1,11 +1,11 @@
 class Bullet {
     constructor(){
         this.u = game.state.u;
-
+        
         this.x = game.cannon.x;
         this.y = game.cannon.y;
         this.bulletSize = game.cannon.coreSize/2;
-
+        
         this.gravity = game.state.gravity;
         this.wind = game.state.wind;
         this.angle = 0;
@@ -23,23 +23,19 @@ class Bullet {
     }
     
     move(){
-        
         if (game.state.state === 'shoot'){
             this.x += this.velocityVector.rotatedX;
             this.y -= this.velocityVector.rotatedY;
-            
             // gravity 
             this.velocityVector.rotatedY -= this.gravity;
             // wind
             this.velocityVector.rotatedX -= this.wind;
         }
     }
-    //console.log(`%c / gravity in move mod: ${this.gravity}`, `color: red`)
     
-    draw(state){
+    draw(){
         angleMode(DEGREES)       
-
-        // 
+        // the vector
         line(this.x, this.y, this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY)
         // the bullet
         fill('azure')
@@ -49,8 +45,8 @@ class Bullet {
         noStroke()
         circle(this.x + 16*this.velocityVector.rotatedX, this.y - 16*this.velocityVector.rotatedY, this.u)
         
-                // size of the bullet changing
-        // could make 1 more for the win lose stuff
+        // size of the bullet changing
+        // couldn't make 1 more for the win lose stuff :D
         if (game.state.state === 'setup'){
             this.bulletSize -= game.cannon.coreSize/100;
             if (this.bulletSize <= game.cannon.coreSize/10){
@@ -62,7 +58,6 @@ class Bullet {
                 this.bulletSize += game.cannon.coreSize/200;   
             }
         }
-
     }
 }
 

@@ -5,6 +5,7 @@ class Background {
         this.playerFloorHeight = 90*this.u;
         this.windOffset = 1000*game.state.wind;
         
+        // new set of backround wind lines
         this.lines = this.newLinesSet();
         
         this.blocksLeft = game.state.blocksLeft;
@@ -19,8 +20,7 @@ class Background {
         console.log(`%c / background constructor`, 'color: green');
     }
     
-    
-    
+    // creating the random backgorund lines for wind representation
     newLinesSet(){
         let arr = [];
         for (let i = 1; i < game.state.backgroundLines; i++ ){
@@ -65,10 +65,9 @@ class Background {
             }
         }
         
+        // -- floor
         stroke('gainsboro');
         fill('gainsboro')
-        
-        // -- floor
         rect(0, this.playerFloorHeight, width, this.playerFloorHeight);
         
         // -- hill
@@ -76,12 +75,14 @@ class Background {
             rect(this.blocksLeft + (this.blocksWidth * block), this.playerFloorHeight-this.blocksHeights[block], this.blocksWidth, height)       
         }
         
-        stroke('black')
-        strokeWeight(1);
-        push()
         // -- points counter
+        push()
         fill('crimson')
         text(`${game.state.points}/${game.state.runs}`, width - 2*this.u, 7*this.u)
         pop()
+
+        // without his the cannon style goes lost
+        stroke('black')
+        strokeWeight(1);
     }   
 }

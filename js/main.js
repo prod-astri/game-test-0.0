@@ -1,25 +1,21 @@
-// the only thinfg i do directly
-
 const game = new Game();
 
 function preload() {
+    // useless now, may use to add  sound though
     game.preloadGame();
 }
 
-let side = 0;
-
 function setup() {
-    // let titleStyle = getComputedStyle(document.querySelector('body'));
-    //// //// to solve
-    // console.log (titleStyle) ;
+    let side = 0;
     if (windowWidth > windowHeight){
         side = Math.round(0.9*windowHeight);
     } else if (windowWidth <= windowHeight){
         side = Math.round(0.9*windowWidth);
     }
     
-   var cnv = createCanvas(side, side);
-   cnv.parent("gameBox");
+    // necessary because of weird p5 behaviours
+    var cnv = createCanvas(side, side);
+    cnv.parent("gameBox");
     game.setup();
 }
 

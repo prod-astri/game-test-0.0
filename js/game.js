@@ -18,17 +18,13 @@ class Game {
     setup(){
         this.state = new State(0, 0);
         this.background = new Background();
-
         this.mycontrols = new myControls();
-
         this.cannon = new Cannon();
         this.bullet = new Bullet();
-
         this.target = new Target();
 
         textSize(6*this.state.u);
         textAlign(RIGHT);
-        
         
         // creating the inputs and button;
         this.angleInput = createInput('0', 'number');
@@ -51,16 +47,12 @@ class Game {
     }
 
     resetup(){
-        this.u = width/100
+        this.u = width/100;
         this.state = new State(this.state.points, this.state.runs);
         this.background = new Background();
-
-       
         this.mycontrols = new myControls();
-
         this.cannon = new Cannon();
         this.bullet = new Bullet();
-
         this.target = new Target();
 
         textSize(6*this.state.u);
@@ -69,6 +61,7 @@ class Game {
     }
     
     preloadGame(){
+        // useless now, may use to add  sound though
         console.log(`%c / Preload!`, 'color: green')
     }
     
@@ -78,9 +71,10 @@ class Game {
         this.background.draw();
         this.mycontrols.draw();
         this.cannon.draw();
+
         this.bullet.move();
-        this.bullet.draw();
-        
+        this.bullet.draw(); 
+
         this.target.draw();
 
         this.state.collisions();
@@ -111,7 +105,7 @@ class Game {
     }
     
     myButtonEvent = () => {
-        
+        // don't allow adjustments while the bullet is in flight
         if (this.state.state === 'setup'){
             
             this.angleCommitted = this.angleMomentary;
@@ -123,6 +117,7 @@ class Game {
             
             //// //// this is really not ideal; 
             //// //// why have the truth in the state then?
+            //// //// it's a problem with the whole thing.
             this.state.state = 'shoot';
             
             console.log(`%c shot with angle ${this.angleCommitted} and vel ${this.velocityCommitted}`, `color: orange`);
