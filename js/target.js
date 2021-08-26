@@ -2,8 +2,9 @@ class Target {
     constructor(){
         //                                                  V circle + rect
         this.size = game.cannon.coreSize/2.5;
-        this.limit = game.cannon.x + (game.cannon.coreSize * 2.2);
-        
+        // this.limit = game.cannon.x + (game.cannon.coreSize * 2.2);
+        this.limit = 0.8*width+this.size;
+
         this.x = (Math.random() * (width - this.limit)) + this.limit;
         // this.x = game.cannon.x;
         this.y = Math.random()*(game.background.playerFloorHeight - this.size);

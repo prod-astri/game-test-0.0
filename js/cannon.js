@@ -2,8 +2,8 @@ class Cannon {
     constructor(){
         this.u = game.state.u;
         
-        this.coreSize = 8*this.u;
-        this.x = this.coreSize*1.5;
+        this.coreSize = 6*this.u;
+        this.x = game.state.blocksLeft/2
         this.y = game.background.playerFloorHeight - this.coreSize/2;
 
         this.angle = game.angleMomentary;
@@ -17,7 +17,7 @@ class Cannon {
         fill('azure')
         circle(this.x, this.y, this.coreSize);
         
-        rect(this.x-this.coreSize/2, this.y-this.coreSize*1.2, this.coreSize, this.coreSize*1.2)
+        rect(this.x-this.coreSize/2, this.y-this.coreSize, this.coreSize, this.coreSize)
         
         // console.log(`%c cannon angle = ${this.angle}`, `color: salmon`)
     }

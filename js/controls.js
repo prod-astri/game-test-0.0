@@ -1,11 +1,10 @@
 class myControls {
     constructor(){
         this.y = 0.95*height;
-        console.log("controls!")
+        console.log(`%c / controls constructor`, `color: green`)
     }
 
     draw(){
-        
         
         line(0.05*width, this.y, 0.35*width, this.y)
         line(0.65*width, this.y, 0.95*width, this.y)
